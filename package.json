@@ -1,0 +1,59 @@
+{
+	"name": "@desislavsd/tiny-observable",
+	"version": "0.1.0",
+	"description": "Tiny observable pattern for lightweight use cases",
+	"homepage": "https://github.com/desislavsd/tiny-observable#readme",
+	"bugs": {
+		"url": "https://github.com/desislavsd/tiny-observable/issues"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/desislavsd/tiny-observable.git"
+	},
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "bunup",
+		"dev": "bunup --watch",
+		"check": "bun run format && bun lint && bun run type-check && bun run test",
+		"format": "oxfmt",
+		"lint": "oxlint",
+		"prepare": "bun simple-git-hooks",
+		"release": "bumpp --commit --push --tag",
+		"test": "bun test",
+		"test:coverage": "bun test --coverage",
+		"test:watch": "bun test --watch",
+		"type-check": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.3.13",
+		"bumpp": "^11.0.1",
+		"bunup": "^0.16.31",
+		"oxfmt": "^0.47.0",
+		"oxlint": "^1.62.0",
+		"simple-git-hooks": "^2.13.1",
+		"typescript": "^6.0.3"
+	},
+	"peerDependenciesMeta": {
+		"typescript": {
+			"optional": true
+		}
+	},
+	"simple-git-hooks": {
+		"pre-commit": "bun run lint && bun run type-check"
+	}
+}
